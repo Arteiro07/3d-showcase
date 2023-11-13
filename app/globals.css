@@ -1,27 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600&display=swap");
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	width: 100vw; /* 100% of the viewport width */
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins", sans-serif;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+}
+.background-false {
+	background: #252525;
+	background: linear-gradient(15deg, #101010 0%, #252525 100%);
+}
+.background-true {
+	background: #dadada;
+	background: linear-gradient(15deg, #efefef 0%, #dadada 100%);
+}
+
+.theme-seletctor {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1;
+}
+.theme-button {
+	opacity: 0.6;
+	cursor: pointer;
+	transition: ease-in-out;
+	font-size: 25px;
+}
+.theme-button.true {
+	color: #252525;
+}
+.theme-button.false {
+	color: #dadada;
+}
+
+.theme-button:hover {
+	transform: scale(1.2);
+	opacity: 1;
 }
