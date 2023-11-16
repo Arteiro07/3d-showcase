@@ -20,7 +20,7 @@ body {
 }
 .background-true {
 	background: #dadada;
-	background: linear-gradient(15deg, #efefef 0%, #dadada 100%);
+	background: linear-gradient(15deg, #cdcdcd 0%, #cacaca 100%);
 }
 
 .theme-seletctor {

@@ -8,6 +8,7 @@ import React, { useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useLoadTexture } from "@/hooks/useTextureLoader";
+import { useFrame } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
 	nodes: {
@@ -77,6 +78,23 @@ export function DrWhoBox(props: JSX.IntrinsicElements["group"]) {
 			}
 		}
 	};
+
+	const speed = 0.7;
+	const [cameraPosition, setCameraPosition] = useState<THREE.Vector3>(
+		new THREE.Vector3(0, 0, 4)
+	);
+
+	useFrame((state, delta) => {
+		state.camera.lookAt(0, 0, 0);
+		if (open) {
+			setCameraPosition(new THREE.Vector3(0, 0, 10));
+		} else {
+			setCameraPosition(new THREE.Vector3(0, 0, 4));
+		}
+
+		state.camera.position.lerp(cameraPosition, delta * speed);
+	});
+
 	return (
 		<>
 			{/* {open ? <></> : <spotLight position={[0, 0, 0]} intensity={1.5} />} */}

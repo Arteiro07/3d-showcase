@@ -49,6 +49,7 @@ type ContextType = Record<
 
 export function ShojiBox(props: JSX.IntrinsicElements["group"]) {
 	const brown = "#5B270B";
+	const shoji = "#D4C7B2";
 	const [open, setOpen] = useState(false);
 	const group = useRef<THREE.Group>(null);
 	const { nodes, materials, animations } = useGLTF(
@@ -102,11 +103,14 @@ export function ShojiBox(props: JSX.IntrinsicElements["group"]) {
 				</mesh>
 				<group name="65481ab20629a77206b4739e001" onClick={handleClick}>
 					<mesh name="ID10" geometry={nodes.ID10.geometry}>
-						<meshStandardMaterial {...goldTexture_Props} />
+						<meshStandardMaterial {...goldTexture_Props} metalness={1} />
 					</mesh>
 					<mesh name="ID10_1" geometry={nodes.ID10_1.geometry}>
-						{" "}
-						<meshStandardMaterial {...paperTexture_Props} transparent />
+						<meshStandardMaterial
+							{...paperTexture_Props}
+							transparent
+							color={shoji}
+						/>
 					</mesh>
 					<mesh name="ID10_2" geometry={nodes.ID10_2.geometry}>
 						<meshStandardMaterial {...plasticTexture_Props} color={brown} />
@@ -116,7 +120,11 @@ export function ShojiBox(props: JSX.IntrinsicElements["group"]) {
 					name="65481ab20629a77206b4739e004"
 					geometry={nodes["65481ab20629a77206b4739e004"].geometry}
 				>
-					<meshStandardMaterial {...paperTexture_Props} transparent />
+					<meshStandardMaterial
+						{...paperTexture_Props}
+						transparent
+						color={shoji}
+					/>
 				</mesh>
 				<mesh
 					name="65481ab20629a77206b4739e005"
@@ -126,10 +134,14 @@ export function ShojiBox(props: JSX.IntrinsicElements["group"]) {
 				</mesh>
 				<group name="65481ab20629a77206b4739e006" onClick={handleClick}>
 					<mesh name="ID44" geometry={nodes.ID44.geometry}>
-						<meshStandardMaterial {...goldTexture_Props} />
+						<meshStandardMaterial {...goldTexture_Props} metalness={1} />
 					</mesh>
 					<mesh name="ID44_1" geometry={nodes.ID44_1.geometry}>
-						<meshStandardMaterial {...paperTexture_Props} />
+						<meshStandardMaterial
+							{...paperTexture_Props}
+							color={shoji}
+							metalness={0}
+						/>
 					</mesh>
 					<mesh name="ID44_2" geometry={nodes.ID44_2.geometry}>
 						<meshStandardMaterial {...plasticTexture_Props} color={brown} />
@@ -139,19 +151,31 @@ export function ShojiBox(props: JSX.IntrinsicElements["group"]) {
 					name="65481ab20629a77206b4739e009"
 					geometry={nodes["65481ab20629a77206b4739e009"].geometry}
 				>
-					<meshStandardMaterial {...paperTexture_Props} transparent />
+					<meshStandardMaterial
+						{...paperTexture_Props}
+						transparent
+						color={shoji}
+					/>
 				</mesh>
 				<mesh
 					name="65481ab20629a77206b4739e010"
 					geometry={nodes["65481ab20629a77206b4739e010"].geometry}
 				>
-					<meshStandardMaterial {...paperTexture_Props} transparent />
+					<meshStandardMaterial
+						{...paperTexture_Props}
+						transparent
+						color={shoji}
+					/>
 				</mesh>
 				<mesh
 					name="65481ab20629a77206b4739e011"
 					geometry={nodes["65481ab20629a77206b4739e011"].geometry}
 				>
-					<meshStandardMaterial {...paperTexture_Props} transparent />
+					<meshStandardMaterial
+						{...paperTexture_Props}
+						transparent
+						color={shoji}
+					/>
 				</mesh>
 			</group>
 		</group>

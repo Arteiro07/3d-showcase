@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import PropTypes from "prop-types";
 import {
 	AccumulativeShadows,
 	Center,
 	Environment,
+	Lightformer,
 	MeshReflectorMaterial,
 	OrbitControls,
 	PresentationControls,
@@ -13,26 +14,48 @@ import {
 	Stage,
 } from "@react-three/drei";
 import { ShojiBox } from "./ShojiBox";
+import { BlendFunction } from "postprocessing";
 import { useThemes } from "@/contexts/ThemeContext";
 import { DrWhoBox } from "./DrWhoBox";
 import { Ground } from "./Ground";
+import { useLoadTexture } from "@/hooks/useTextureLoader";
+import {
+	ChromaticAberration,
+	EffectComposer,
+	Bloom,
+	DepthOfField,
+} from "@react-three/postprocessing";
+import { useControls } from "leva";
 
 export default function Showroom() {
+	const { theme } = useThemes();
+
+	// const { intensity, x, y, z } = useControls({
+	// 	intensity: { value: 1, min: 0, max: 100 },
+	// 	x: { value: 0, min: -10, max: 10 },
+	// 	y: { value: 0, min: -10, max: 10 },
+	// 	z: { value: 0, min: -10, max: 10 },
+	// });
+
 	return (
 		<>
+			<pointLight position={[0, 0, 1.5]} intensity={10} />
+			<Environment preset="city"></Environment>
+			<RandomizedLight amount={8} frames={100} position={[5, 5, -10]} />
 			<PresentationControls
 				config={{ mass: 1, tension: 250, friction: 25 }}
 				snap={{ mass: 10, tension: 250, friction: 100 }}
 				rotation={[0.5, 0.5, 0]}
-				polar={[-Math.PI / 5, Math.PI / 6]}
+				polar={[-Math.PI / 10, Math.PI / 6]}
 			>
-				<ambientLight intensity={4} />
 				<Ground />
-				<Center>
-					<Resize height>
-						<ShojiBox />
-						{/* <DrWhoBox /> */}
-					</Resize>
+				<Center top>
+					<Suspense fallback={null}>
+						<Resize>
+							<ShojiBox />
+							{/* <DrWhoBox /> */}
+						</Resize>
+					</Suspense>
 				</Center>
 			</PresentationControls>
 		</>

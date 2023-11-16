@@ -3,14 +3,17 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { RepeatWrapping, TextureLoader } from "three";
 import { useLoadTexture } from "@/hooks/useTextureLoader";
+import { useThemes } from "@/contexts/ThemeContext";
+import { color } from "three/examples/jsm/nodes/Nodes.js";
 
 export function Ground() {
 	// thanks to https://polyhaven.com/a/rough_plasterbrick_05 !
-	const { groundTextureProps } = useLoadTexture();
+	const { groundTextureProps, graniteTextureProps } = useLoadTexture();
+	const { theme } = useThemes();
 
 	return (
 		<mesh
-			position={[0, -0.5, 0]}
+			position={[0, 0, 0]}
 			rotation-x={-Math.PI * 0.5}
 			castShadow
 			receiveShadow
@@ -19,10 +22,9 @@ export function Ground() {
 			<MeshReflectorMaterial
 				envMapIntensity={0}
 				{...groundTextureProps}
-				// normalScale={[0.15, 0.15]}
-
+				//normalScale={[0.15, 0.15]
 				dithering={true}
-				color={[0.015, 0.015, 0.015]}
+				color={theme ? [1, 0.7, 0.7] : [0.015, 0.015, 0.015]}
 				roughness={0.7}
 				blur={[1000, 400]} // Blur ground reflections (width, heigt), 0 skips blur
 				mixBlur={30} // How much blur mixes with surface roughness (default = 1)
