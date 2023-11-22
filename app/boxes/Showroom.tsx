@@ -54,7 +54,9 @@ export default function Showroom() {
 				<Ground />
 				<Center top>
 					<Suspense fallback={null}>
-						<Resize height>{boxArray[boxIndex].component}</Resize>
+						<Resize height key={boxArray[boxIndex].id}>
+							{boxArray[boxIndex].component}
+						</Resize>
 					</Suspense>
 				</Center>
 			</PresentationControls>
