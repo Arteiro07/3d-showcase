@@ -1,0 +1,30 @@
+@import "@/utilities/base.scss";
+
+.right,
+.left {
+	cursor: pointer;
+	opacity: 0.4;
+	color: $font-color-light;
+	font-size: 35px;
+}
+
+.right {
+	position: fixed;
+	z-index: 1;
+	right: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.left {
+	position: fixed;
+	z-index: 1;
+	left: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.left:hover,
+.right:hover {
+	opacity: 1;
+}

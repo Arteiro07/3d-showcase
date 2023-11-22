@@ -8,12 +8,12 @@ import { color } from "three/examples/jsm/nodes/Nodes.js";
 
 export function Ground() {
 	// thanks to https://polyhaven.com/a/rough_plasterbrick_05 !
-	const { groundTextureProps, graniteTextureProps } = useLoadTexture();
+	const { groundTextureProps } = useLoadTexture();
 	const { theme } = useThemes();
 
 	return (
 		<mesh
-			position={[0, 0, 0]}
+			position={[0, -0.05, 0]}
 			rotation-x={-Math.PI * 0.5}
 			castShadow
 			receiveShadow
@@ -24,7 +24,7 @@ export function Ground() {
 				{...groundTextureProps}
 				//normalScale={[0.15, 0.15]
 				dithering={true}
-				color={theme ? [1, 0.7, 0.7] : [0.015, 0.015, 0.015]}
+				color={theme ? [0.015, 0.015, 0.015] : [0.015, 0.015, 0.015]}
 				roughness={0.7}
 				blur={[1000, 400]} // Blur ground reflections (width, heigt), 0 skips blur
 				mixBlur={30} // How much blur mixes with surface roughness (default = 1)

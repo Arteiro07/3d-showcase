@@ -24,10 +24,11 @@ export const useLoadTexture = () => {
 	///
 
 	const paperTexture_Props = useTexture({
-		map: "/textures/paper/Paper_Recycled_001_COLOR.jpg",
+		//map: "/textures/paper/Paper_Recycled_001_COLOR.jpg",
 		normalMap: "textures/paper/Paper_Recycled_001_NORM.jpg",
 		roughnessMap: "textures/paper/Paper_Recycled_001_ROUGH.jpg",
 		aoMap: "textures/paper/Paper_Recycled_001_OCC.jpg",
+		displacemntMap: "textures/paper/Paper_Recycled_001_DISP.png",
 	});
 
 	paperTexture_Props.normalMap.repeat.set(3, 3);

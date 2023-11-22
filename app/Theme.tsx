@@ -1,15 +1,16 @@
 "use client";
 import { useThemes } from "@/contexts/ThemeContext";
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
+import style from "./app.module.scss";
 
 export default function Theme() {
 	const { theme, setTheme } = useThemes();
 
 	return (
 		<>
-			<div className="theme-seletctor">
+			<div className={style.themeSeletctor}>
 				<div
-					className={`theme-button ${theme}`}
+					className={`${style.themeButton} ${theme ? style.true : style.false}`}
 					onClick={() => setTheme(!theme)}
 				>
 					{theme ? <BiSolidMoon /> : <BiSolidSun />}
