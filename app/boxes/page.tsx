@@ -9,7 +9,7 @@ import style from "./boxes.module.scss";
 import { useBoxIndex } from "@/contexts/BoxIndexContext";
 import { maxBoxIndex } from "@/components/boxes/Index";
 
-export default function page() {
+export default function Page() {
 	const { theme } = useThemes();
 	const { boxIndex, setBoxIndex } = useBoxIndex();
 
