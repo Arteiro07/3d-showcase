@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.2.15 public/models/dr_who_box.gltf -o components/DrWhoBox
 */
 
 import * as THREE from "three";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useLoadTexture } from "@/hooks/useTextureLoader";
@@ -83,6 +83,19 @@ export function DrWhoBox(props: JSX.IntrinsicElements["group"]) {
 	const [cameraPosition, setCameraPosition] = useState<THREE.Vector3>(
 		new THREE.Vector3(0, 0, 4)
 	);
+	const [boxPosition, setBoxPosition] = useState<THREE.Vector3>(
+		new THREE.Vector3(0, 0, 0)
+	);
+
+	useEffect(() => {
+		// Code to run when the component mounts
+		setBoxPosition(new THREE.Vector3(0, 0, 0));
+
+		return () => {
+			// Code to run when the component unmounts
+			setBoxPosition(new THREE.Vector3(1, 0, 1));
+		};
+	}, []);
 
 	useFrame((state, delta) => {
 		state.camera.lookAt(0, 0, 0);
@@ -92,12 +105,13 @@ export function DrWhoBox(props: JSX.IntrinsicElements["group"]) {
 			setCameraPosition(new THREE.Vector3(0, 0, 4));
 		}
 
+		group.current?.position.lerp(boxPosition, delta * speed);
 		state.camera.position.lerp(cameraPosition, delta * speed);
 	});
 
 	return (
 		<>
-			<group ref={group} {...props} dispose={null} position={[0, 0, 0]}>
+			<group ref={group} {...props} dispose={null} position={[-1, 0, -1]}>
 				<group name="Scene">
 					<group name="654afec8452deb52eca729f4" onClick={handleClick}>
 						<mesh

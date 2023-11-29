@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemesProvider } from "@/contexts/ThemeContext";
 import Theme from "./Theme";
+import Footer from "./Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 				<ThemesProvider>
 					<Theme />
 					{children}
+					<Footer />
 				</ThemesProvider>
 			</body>
 		</html>

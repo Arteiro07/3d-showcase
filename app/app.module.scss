@@ -32,3 +32,31 @@
 	transform: scale(1.2);
 	opacity: 1;
 }
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	background-color: rgba($color: #333333, $alpha: 0.5);
+	color: $font-color-light;
+	padding: 20px;
+	text-align: center;
+	transition: height 0.3s ease;
+	width: 100%;
+}
+
+.content {
+	display: none;
+}
+
+.expanded {
+	height: 150px; /* Set the desired expanded height */
+}
+
+.expanded .content {
+	display: block;
+}
+
+.toggle {
+	display: absolute;
+	right: 10;
+}
